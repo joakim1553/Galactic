@@ -41,8 +41,8 @@ kable(summary_table, format = "markdown")
 ```{r}
 library(ggplot2)
 
-ggplot(Planet_data, aes(x = 'mass (earth)', y = 'density')) +
-  geom_jitter(alpha = 0.5) +  
+ggplot(Planet_data, aes(x = `mass..earth.`, y = `density`)) +
+  geom_point(alpha = 0.5) +  
   geom_smooth(method = "loess", se = FALSE, color = "blue") +  
   labs(title = "Smoothed Density vs. Mass",
        x = "Mass",
@@ -51,13 +51,15 @@ ggplot(Planet_data, aes(x = 'mass (earth)', y = 'density')) +
 ```
 
 ```{r}
+library(knitr)
+library(tidyr)
 extreme_planets <- data.frame(
   Densest = ifelse(any(Planet_data$density != "?"), Planet_data$p_name[which.max(Planet_data$density)], NA),
   LeastDense = ifelse(any(Planet_data$density != "?"), Planet_data$p_name[which.min(Planet_data$density)], NA),
-  Heaviest = ifelse(any(Planet_data$'mass (earth)' != "?"), Planet_data$p_name[which.max(Planet_data$'mass (earth)')], NA),
-  Lightest = ifelse(any(Planet_data$'mass (earth)' != "?"), Planet_data$p_name[which.min(Planet_data$'mass (earth)')], NA),
-  Largest = ifelse(any(Planet_data$'Radius (Earth)' != "?"), Planet_data$p_name[which.max(Planet_data$'Radius (Earth)')], NA),
-  Smallest = ifelse(any(Planet_data$'Radius (Earth)' != "?"), Planet_data$p_name[which.min(Planet_data$'Radius (Earth)')], NA)
+  Heaviest = ifelse(any(Planet_data$`mass..earth.` != "?"), Planet_data$p_name[which.max(Planet_data$`mass..earth.`)], NA),
+  Lightest = ifelse(any(Planet_data$`mass..earth.` != "?"), Planet_data$p_name[which.min(Planet_data$`mass..earth.`)], NA),
+  Largest = ifelse(any(Planet_data$`Radius..Earth.` != "?"), Planet_data$p_name[which.max(Planet_data$`Radius..Earth.`)], NA),
+  Smallest = ifelse(any(Planet_data$`Radius..Earth.` != "?"), Planet_data$p_name[which.min(Planet_data$`Radius..Earth.`)], NA)
 )
 
 kable(extreme_planets, format = "markdown")
@@ -82,5 +84,9 @@ print(terrain_data)
 
 print("Climate Data:")
 print(climate_data)
+
+```
+
+```{r}
 
 ```
