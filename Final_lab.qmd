@@ -115,4 +115,19 @@ print(num_var)
 
 ```{r}
 
+library(dplyr)
+
+
+planetes_sans_etoiles <- anti_join(Planet_data, Star_data, by = "star_idx")
+
+etoiles_sans_planetes <- anti_join(Star_data, Planet_data, by = "star_idx")
+
+nombre_etoiles_sans_planetes <- nrow(etoiles_sans_planetes)
+
+cat("Noms des planètes sans étoiles associées:\n")
+print(planetes_sans_etoiles$p_name)
+
+cat("\nNombre d'étoiles sans planètes associées:", nombre_etoiles_sans_planetes, "\n")
+
+
 ```
