@@ -11,13 +11,28 @@ Link to the github repository : https://github.com/joakim1553/Galactic
 ```{r}
 Planet_data <- read.delim("C:\\Users\\kerba\\OneDrive\\Documents\\Galactic\\data\\Planet+data.csv", sep=':')
 print(Planet_data)
-num_variables <-length(Planet_data)
+num_variables <-ncol(Planet_data)
 num_planets <- nrow(Planet_data)
-print(nu)
+print(num_variables)
+print(num_planets)
 
 
 
 
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+```{r}
+library(knitr)
+
+missing_values <- colSums(Planet_data == "?")
+
+obs_with_missing <- sum(apply(Planet_data == "?", 1, any))
+
+summary_table <- data.frame(
+  Metric = c("Number of Observations", "Number of Variables", "Number of Missing Values (per variable)", "Number of Observations with at Least One Missing Value"),
+  Value = c(num_planets, num_variables, paste(missing_values, collapse = ", "), obs_with_missing)
+)
+
+kable(summary_table, format = "markdown")
+
+```
