@@ -131,3 +131,8 @@ cat("\nNombre d'étoiles sans planètes associées:", nombre_etoiles_sans_planet
 
 
 ```
+
+```{r}
+Types_of_Star <- read.delim("C:\\Users\\kerba\\OneDrive\\Documents\\Galactic\\star_types.csv",sep=',')
+print(Types_of_Star)
+```
