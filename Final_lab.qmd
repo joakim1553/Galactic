@@ -13,6 +13,7 @@ Planet_data <- read.delim("C:\\Users\\kerba\\OneDrive\\Documents\\Galactic\\data
 print(Planet_data)
 num_variables <-ncol(Planet_data)
 num_planets <- nrow(Planet_data)
+
 print(num_variables)
 print(num_planets)
 
@@ -34,5 +35,21 @@ summary_table <- data.frame(
 )
 
 kable(summary_table, format = "markdown")
+
+```
+
+```{r}
+library(ggplot2)
+
+ggplot(Planet_data, aes(x = 'mass (earth)', y = 'density')) +
+  geom_point(alpha = 0.5) +  
+  geom_smooth(method = "loess", se = FALSE, color = "blue") +  
+  labs(title = "Smoothed Density vs. Mass",
+       x = "Mass",
+       y = "Density") +
+  theme_minimal()
+```
+
+```{r}
 
 ```
