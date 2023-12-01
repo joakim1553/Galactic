@@ -1,0 +1,23 @@
+---
+title: "KERBAOL"
+format: html
+editor: visual
+---
+
+Question 2 :
+
+Link to the github repository : https://github.com/joakim1553/Galactic
+
+```{r}
+Planet_data <- read.delim("C:\\Users\\kerba\\OneDrive\\Documents\\Galactic\\data\\Planet+data.csv", sep=':')
+print(Planet_data)
+num_variables <-length(Planet_data)
+num_planets <- nrow(Planet_data)
+print(nu)
+
+
+
+
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
