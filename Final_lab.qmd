@@ -42,7 +42,7 @@ kable(summary_table, format = "markdown")
 library(ggplot2)
 
 ggplot(Planet_data, aes(x = 'mass (earth)', y = 'density')) +
-  geom_point(alpha = 0.5) +  
+  geom_jitter(alpha = 0.5) +  
   geom_smooth(method = "loess", se = FALSE, color = "blue") +  
   labs(title = "Smoothed Density vs. Mass",
        x = "Mass",
@@ -64,5 +64,23 @@ kable(extreme_planets, format = "markdown")
 ```
 
 ```{r}
+library(dplyr)
+library(stringr)
+terrain_data <- reframe(
+  Planet_data,
+  PLANET_KEY = p_name,
+  Terrain_Type = str_split(type_terrain, ";", simplify = TRUE)[, 1]
+)
+
+climate_data <- reframe(
+  Planet_data,
+  PLANET_KEY = p_name,
+  Climate_Type = str_split(climate, ";", simplify = TRUE)[, 2]
+)
+print("Terrain Data:")
+print(terrain_data)
+
+print("Climate Data:")
+print(climate_data)
 
 ```
