@@ -88,5 +88,31 @@ print(climate_data)
 ```
 
 ```{r}
+ggplot(climate_data, aes(x = PLANET_KEY, fill = Climate_Type)) +
+  geom_bar() +
+  labs(title = "Distribution of Climates per Planet",
+       x = "Planet",
+       y = "Number of Climates") +
+  theme_minimal()
+
+ggplot(terrain_data, aes(x = PLANET_KEY, fill = Terrain_Type)) +
+  geom_bar() +
+  labs(title = "Distribution of Terrain Types per Planet",
+       x = "Planet",
+       y = "Number of Terrain Types") +
+  theme_minimal()
+```
+
+```{r}
+#i skipped question 9
+Star_data <- read.delim("C:\\Users\\kerba\\OneDrive\\Documents\\Galactic\\data\\Starlist.csv", sep=':')
+print(Star_data)
+num_var <- ncol(Star_data)
+num_stars <- nrow(Star_data)
+print(num_stars)
+print(num_var)
+```
+
+```{r}
 
 ```
